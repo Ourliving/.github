@@ -1,0 +1,17 @@
+name: Move cards to In Progress on PR open
+
+on:
+  pull_request:
+    types: [review_requested]
+
+jobs:
+  move-cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create or Update Project Card
+        uses: peter-evans/create-or-update-project-card@v2
+        with:
+          project-location: Ourliving
+          project-name: Ourliving
+          column-name: In Review
